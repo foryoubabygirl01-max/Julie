@@ -7,34 +7,37 @@
 <title>For Julie 🌸</title>
 
 <style>
+
 body{
     margin:0;
-    height:100vh;
+    min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
     background:linear-gradient(135deg,#f7efff,#ffeef7);
     font-family:Arial,sans-serif;
+    overflow:hidden;
 }
 
 .container{
     text-align:center;
 }
 
+/* Envelope */
+
 .envelope{
     width:220px;
     height:140px;
     background:#ffd6e7;
-    border-radius:10px;
+    border-radius:12px;
     position:relative;
     cursor:pointer;
-    margin:auto;
-    box-shadow:0 10px 25px rgba(0,0,0,.15);
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
     transition:.3s;
 }
 
 .envelope:hover{
-    transform:scale(1.05);
+    transform:scale(1.08);
 }
 
 .envelope:before{
@@ -49,27 +52,50 @@ body{
     border-top:70px solid #ffbfd8;
 }
 
+.envelope-heart{
+    position:absolute;
+    bottom:10px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:30px;
+}
+
 .envelope-lily{
     position:absolute;
     left:50%;
-    bottom:35px;
+    bottom:40px;
     transform:translateX(-50%);
     font-size:60px;
     animation:sway 3s infinite ease-in-out;
 }
 
+@keyframes sway{
+    0%,100%{
+        transform:translateX(-50%) rotate(-5deg);
+    }
+
+    50%{
+        transform:translateX(-50%) rotate(5deg);
+    }
+}
+
+/* Hidden */
+
 .hidden{
     display:none;
 }
 
+/* Opened Content */
+
 .content{
-    animation:fadeIn 1s ease;
+    animation:fadeIn 1.5s ease;
 }
 
 .lily{
-    font-size:140px;
-    animation:bloom 1.5s ease,
-             floatFlower 4s infinite ease-in-out;
+    font-size:150px;
+    animation:
+    bloom 1.8s ease,
+    floatFlower 4s infinite ease-in-out;
 }
 
 .message{
@@ -90,23 +116,41 @@ body{
     color:#444;
 }
 
-@keyframes sway{
-    0%,100%{
-        transform:translateX(-50%) rotate(-5deg);
+/* Falling Flowers */
+
+.falling-flower{
+    position:fixed;
+    top:-50px;
+    pointer-events:none;
+    z-index:999;
+    animation:fallFlower linear forwards;
+}
+
+@keyframes fallFlower{
+
+    from{
+        transform:translateY(-50px) rotate(0deg);
+        opacity:1;
     }
 
-    50%{
-        transform:translateX(-50%) rotate(5deg);
+    to{
+        transform:translateY(110vh) rotate(360deg);
+        opacity:0;
     }
+
 }
+
+/* Animations */
 
 @keyframes fadeIn{
     from{
         opacity:0;
+        transform:translateY(30px);
     }
 
     to{
         opacity:1;
+        transform:translateY(0);
     }
 }
 
@@ -128,9 +172,10 @@ body{
     }
 
     50%{
-        transform:translateY(-10px);
+        transform:translateY(-12px);
     }
 }
+
 </style>
 
 </head>
@@ -141,7 +186,11 @@ body{
 
 ```
 <div id="letter" class="envelope">
+
     <div class="envelope-lily">🌸</div>
+
+    <div class="envelope-heart">💖</div>
+
 </div>
 
 <div id="content" class="content hidden">
@@ -182,13 +231,45 @@ body{
 </div>
 
 <script>
-document.getElementById("letter").addEventListener("click",function(){
 
-    document.getElementById("letter").style.display="none";
+document.getElementById("letter").addEventListener("click", function(){
+
+    document.getElementById("letter").style.display = "none";
 
     document.getElementById("content").classList.remove("hidden");
 
+    createFlowers();
+
 });
+
+function createFlowers(){
+
+    for(let i = 0; i < 40; i++){
+
+        let flower = document.createElement("div");
+
+        flower.className = "falling-flower";
+
+        flower.innerHTML = "🌸";
+
+        flower.style.left = Math.random() * 100 + "vw";
+
+        flower.style.animationDuration =
+        (4 + Math.random() * 4) + "s";
+
+        flower.style.fontSize =
+        (20 + Math.random() * 25) + "px";
+
+        document.body.appendChild(flower);
+
+        setTimeout(function(){
+            flower.remove();
+        }, 8000);
+
+    }
+
+}
+
 </script>
 
 </body>
