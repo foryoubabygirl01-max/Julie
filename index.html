@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lily Letter</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#f7efff,#ffeef7);
+    font-family:Arial, sans-serif;
+    overflow:hidden;
+}
+
+.container{
+    text-align:center;
+}
+
+/* Envelope */
+
+.envelope{
+    width:220px;
+    height:140px;
+    background:#ffd6e7;
+    position:relative;
+    cursor:pointer;
+    margin:auto;
+    border-radius:10px;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+    transition:transform .3s;
+}
+
+.envelope:hover{
+    transform:scale(1.08);
+}
+
+.envelope::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:0;
+    height:0;
+    border-left:110px solid transparent;
+    border-right:110px solid transparent;
+    border-top:70px solid #ffbfd8;
+}
+
+.envelope::after{
+    content:"💖";
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    font-size:30px;
+}
+
+/* Hidden Content */
+
+.hidden{
+    display:none;
+}
+
+.content{
+    animation:fadeIn 1.5s ease;
+}
+
+/* Lily Image */
+
+.lily{
+    width:250px;
+    animation:
+    bloom 2s ease forwards,
+    floatFlower 4s ease-in-out infinite;
+
+    filter:
+    drop-shadow(0 0 15px pink)
+    drop-shadow(0 0 30px white);
+}
+
+/* Message Card */
+
+.message{
+    margin-top:20px;
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 0 20px rgba(0,0,0,.1);
+    max-width:450px;
+}
+
+.message h2{
+    color:#ff5fa2;
+    font-size:32px;
+    margin-bottom:15px;
+}
+
+.message p{
+    font-size:18px;
+    line-height:1.7;
+    color:#555;
+}
+
+/* Animations */
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes bloom{
+    0%{
+        opacity:0;
+        transform:scale(0);
+    }
+
+    70%{
+        transform:scale(1.15);
+    }
+
+    100%{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+@keyframes floatFlower{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+```
+<div id="letter" class="envelope"></div>
+
+<div id="content" class="content hidden">
+
+    <img
+    class="lily"
+    src="https://pngimg.com/d/lily_PNG31.png"
+    alt="Lily">
+
+    <div class="message">
+        <h2>For You 🌸</h2>
+
+        <p>
+            a lab yo
+        </p>
+
+    </div>
+
+</div>
+```
+
+</div>
+
+<script>
+
+document.getElementById("letter").addEventListener("click", function(){
+
+    document.getElementById("letter").style.display = "none";
+
+    document.getElementById("content").classList.remove("hidden");
+
+});
+
+</script>
+
+</body>
+</html>
