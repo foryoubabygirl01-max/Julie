@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lily Letter</title>
+<title>For Julie 🌸</title>
 
 <style>
 body{
@@ -55,13 +55,34 @@ body{
 .envelope::after{
     content:"💖";
     position:absolute;
-    top:50%;
+    top:75%;
     left:50%;
     transform:translate(-50%,-50%);
-    font-size:30px;
+    font-size:28px;
 }
 
-/* Hidden Content */
+/* Lily inside envelope */
+
+.envelope-lily{
+    position:absolute;
+    width:110px;
+    bottom:45px;
+    left:50%;
+    transform:translateX(-50%);
+    animation:sway 3s ease-in-out infinite;
+}
+
+@keyframes sway{
+    0%,100%{
+        transform:translateX(-50%) rotate(-3deg);
+    }
+
+    50%{
+        transform:translateX(-50%) rotate(3deg);
+    }
+}
+
+/* Hidden content */
 
 .hidden{
     display:none;
@@ -71,10 +92,11 @@ body{
     animation:fadeIn 1.5s ease;
 }
 
-/* Lily Image */
+/* Large lily after opening */
 
 .lily{
     width:250px;
+
     animation:
     bloom 2s ease forwards,
     floatFlower 4s ease-in-out infinite;
@@ -84,7 +106,7 @@ body{
     drop-shadow(0 0 30px white);
 }
 
-/* Message Card */
+/* Message */
 
 .message{
     margin-top:20px;
@@ -92,19 +114,18 @@ body{
     padding:25px;
     border-radius:20px;
     box-shadow:0 0 20px rgba(0,0,0,.1);
-    max-width:450px;
+    max-width:500px;
 }
 
 .message h2{
     color:#ff5fa2;
-    font-size:32px;
     margin-bottom:15px;
 }
 
 .message p{
-    font-size:18px;
-    line-height:1.7;
+    line-height:1.8;
     color:#555;
+    font-size:17px;
 }
 
 /* Animations */
@@ -154,7 +175,14 @@ body{
 <div class="container">
 
 ```
-<div id="letter" class="envelope"></div>
+<div id="letter" class="envelope">
+
+    <img
+    class="envelope-lily"
+    src="https://pngimg.com/d/lily_PNG31.png"
+    alt="Lily">
+
+</div>
 
 <div id="content" class="content hidden">
 
@@ -164,38 +192,29 @@ body{
     alt="Lily">
 
     <div class="message">
-        <h2>For You 🌸</h2>
+
+        <h2>Hi Julie! 🌸</h2>
 
         <p>
-          <div class="message">
-    <h2>Hi Julie! 🌸</h2>
+            I dedicate this flower to you.<br><br>
 
-```
-<p>
-    I dedicate this flower to you.<br><br>
+            I know that you said you liked tulips.<br>
+            But I beg to disagree.<br>
+            For you are like a lily,<br><br>
 
-    I know that you said you liked tulips.<br>
-    But I beg to disagree.<br>
-    For you are like a lily,<br><br>
+            Pure and strong,<br>
+            Simple but radiant,<br>
+            Soft and soothing.<br><br>
 
-    Pure and strong,<br>
-    Simple but radiant,<br>
-    Soft and soothing.<br><br>
+            For your beauty grows in your strength,<br><br>
 
-    For your beauty grows in your strength,<br><br>
+            And it blooms in your quiet grace.<br><br>
 
-    And it blooms in your quiet grace.<br><br>
+            Distance may keep us apart,<br>
+            But it never changed how deeply I feel about you.<br><br>
 
-    Distance may keep us apart,<br>
-    But it never changed how deeply I feel about you.<br><br>
-
-    And if home is where the heart is,<br>
-    My home is wherever you are.
-</p>
-```
-
-</div>
-
+            And if home is where the heart is,<br>
+            My home is wherever you are.
         </p>
 
     </div>
